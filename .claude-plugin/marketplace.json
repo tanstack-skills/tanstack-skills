@@ -1,0 +1,133 @@
+{
+  "name": "tanstack-skills",
+  "owner": {
+    "name": "TanStack Skills",
+    "email": "tanstack-skills@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "Claude Code skills for the complete TanStack ecosystem - Router, Query, Start, Table, Form, and more",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "tanstack-all",
+      "source": "./plugins/tanstack-all",
+      "description": "All TanStack skills in one plugin - Router, Query, Start, Table, Form, Virtual, Store, DB, AI, Pacer, Devtools, Config, CLI",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "react", "typescript", "full-stack"]
+    },
+    {
+      "name": "tanstack-core",
+      "source": "./plugins/tanstack-core",
+      "description": "Core TanStack skills: Start, Router, Query - the essential full-stack trio",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "start", "router", "query"]
+    },
+    {
+      "name": "tanstack-ui",
+      "source": "./plugins/tanstack-ui",
+      "description": "TanStack UI skills: Table, Form, Virtual - headless UI components",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "table", "form", "virtual"]
+    },
+    {
+      "name": "tanstack-data",
+      "source": "./plugins/tanstack-data",
+      "description": "TanStack data layer skills: Query, Store, DB - state management and data",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "query", "store", "db"]
+    },
+    {
+      "name": "tanstack-start",
+      "source": "./plugins/tanstack-start",
+      "description": "TanStack Start - Full-stack React framework with SSR, streaming, and server functions",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "start", "ssr", "full-stack"]
+    },
+    {
+      "name": "tanstack-router",
+      "source": "./plugins/tanstack-router",
+      "description": "TanStack Router - Type-safe file-based routing with search params and data loading",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "router", "routing", "typescript"]
+    },
+    {
+      "name": "tanstack-query",
+      "source": "./plugins/tanstack-query",
+      "description": "TanStack Query - Async state management with caching, mutations, and SSR",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "query", "caching", "async"]
+    },
+    {
+      "name": "tanstack-table",
+      "source": "./plugins/tanstack-table",
+      "description": "TanStack Table - Headless tables with sorting, filtering, pagination, virtualization",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "table", "datagrid", "headless"]
+    },
+    {
+      "name": "tanstack-form",
+      "source": "./plugins/tanstack-form",
+      "description": "TanStack Form - Headless forms with sync/async/schema validation",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "form", "validation", "headless"]
+    },
+    {
+      "name": "tanstack-virtual",
+      "source": "./plugins/tanstack-virtual",
+      "description": "TanStack Virtual - Virtualization for lists and grids with dynamic sizing",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "virtual", "virtualization", "performance"]
+    },
+    {
+      "name": "tanstack-store",
+      "source": "./plugins/tanstack-store",
+      "description": "TanStack Store - Framework-agnostic reactive data store",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "store", "state", "reactive"]
+    },
+    {
+      "name": "tanstack-db",
+      "source": "./plugins/tanstack-db",
+      "description": "TanStack DB - Client-first reactive database with live queries",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "db", "database", "reactive"]
+    },
+    {
+      "name": "tanstack-ai",
+      "source": "./plugins/tanstack-ai",
+      "description": "TanStack AI - Provider-agnostic AI SDK with streaming and tool calling",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "ai", "llm", "streaming"]
+    },
+    {
+      "name": "tanstack-pacer",
+      "source": "./plugins/tanstack-pacer",
+      "description": "TanStack Pacer - Debouncing, throttling, rate limiting, queuing utilities",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "pacer", "debounce", "throttle"]
+    },
+    {
+      "name": "tanstack-devtools",
+      "source": "./plugins/tanstack-devtools",
+      "description": "TanStack Devtools - Centralized devtools panel with plugin architecture",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "devtools", "debugging"]
+    },
+    {
+      "name": "tanstack-config",
+      "source": "./plugins/tanstack-config",
+      "description": "TanStack Config - Build, lint, and publish configuration toolkit",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "config", "build", "publish"]
+    },
+    {
+      "name": "tanstack-cli",
+      "source": "./plugins/tanstack-cli",
+      "description": "TanStack CLI - Project scaffolding with 30+ integrations and MCP server",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "cli", "scaffolding", "mcp"]
+    }
+  ]
+}
