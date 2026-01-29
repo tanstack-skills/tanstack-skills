@@ -9,19 +9,36 @@ description: Provider-agnostic, type-safe AI SDK for streaming, tool calling, st
 TanStack AI is a modular, provider-agnostic AI SDK with tree-shakeable adapters for OpenAI, Anthropic, Gemini, Ollama, and more. It provides streaming-first text generation, tool calling with approval workflows, structured output with Zod schemas, multimodal content support, and React hooks for chat/completion UIs.
 
 **Core:** `@tanstack/ai`
+**Vanilla Client:** `@tanstack/ai-client` (framework-agnostic)
 **React:** `@tanstack/ai-react`
+**Solid:** `@tanstack/ai-solid`
 **Adapters:** `@tanstack/ai-openai`, `@tanstack/ai-anthropic`, `@tanstack/ai-gemini`, `@tanstack/ai-ollama`
+**Languages:** TypeScript/JavaScript, PHP, Python
 **Status:** Alpha
 
 ## Installation
 
 ```bash
 npm install @tanstack/ai @tanstack/ai-react
+# Or for framework-agnostic vanilla client:
+npm install @tanstack/ai @tanstack/ai-client
 # Provider adapters (install only what you need):
 npm install @tanstack/ai-openai
 npm install @tanstack/ai-anthropic
 npm install @tanstack/ai-gemini
 npm install @tanstack/ai-ollama
+```
+
+### PHP Installation
+
+```bash
+composer require tanstack/ai tanstack/ai-openai
+```
+
+### Python Installation
+
+```bash
+pip install tanstack-ai tanstack-ai-openai
 ```
 
 ## Core: generate()
@@ -126,6 +143,65 @@ function CompletionUI() {
     </div>
   )
 }
+```
+
+## Solid.js Hooks
+
+```tsx
+import { createChat } from '@tanstack/ai-solid'
+
+function ChatUI() {
+  const chat = createChat({
+    adapter: openaiText({ model: 'gpt-4o' }),
+  })
+
+  return (
+    <div>
+      <For each={chat.messages()}>
+        {(msg) => (
+          <div>
+            <strong>{msg.role}:</strong> {msg.content}
+          </div>
+        )}
+      </For>
+      <form onSubmit={chat.handleSubmit}>
+        <input
+          value={chat.input()}
+          onInput={(e) => chat.setInput(e.target.value)}
+          placeholder="Type a message..."
+        />
+        <button type="submit" disabled={chat.isLoading()}>
+          Send
+        </button>
+      </form>
+    </div>
+  )
+}
+```
+
+## Vanilla Client
+
+For framework-agnostic usage without React or Solid:
+
+```typescript
+import { createAIClient } from '@tanstack/ai-client'
+import { openaiText } from '@tanstack/ai-openai/adapters'
+
+const client = createAIClient({
+  adapter: openaiText({ model: 'gpt-4o' }),
+})
+
+// Subscribe to state changes
+client.subscribe((state) => {
+  console.log('Messages:', state.messages)
+  console.log('Loading:', state.isLoading)
+})
+
+// Send a message
+await client.send('Hello, world!')
+
+// Clear conversation
+client.clear()
 ```
 
 ## Streaming
@@ -275,13 +351,52 @@ const result = await generate({
   }],
 })
 
-// Image generation
+// Image generation with DALL-E
 import { openaiImage } from '@tanstack/ai-openai/adapters'
 
 const image = await generate({
   adapter: openaiImage({ model: 'dall-e-3' }),
   messages: [{ role: 'user', content: 'A sunset over mountains' }],
 })
+
+// Image generation with Gemini Imagen
+import { geminiImage } from '@tanstack/ai-gemini/adapters'
+
+const image = await generate({
+  adapter: geminiImage({ model: 'imagen-3' }),
+  messages: [{ role: 'user', content: 'A futuristic cityscape at night' }],
+})
+```
+
+## Thinking Models (Reasoning Tokens)
+
+Support for models with extended reasoning/thinking capabilities:
+
+```typescript
+import { generate } from '@tanstack/ai'
+import { anthropicText } from '@tanstack/ai-anthropic/adapters'
+
+const result = await generate({
+  adapter: anthropicText({ model: 'claude-sonnet-4-20250514' }),
+  messages: [{ role: 'user', content: 'Solve this complex math problem step by step...' }],
+  thinking: {
+    enabled: true,
+    budget: 10000, // Max thinking tokens
+  },
+})
+
+// Access thinking/reasoning output
+console.log('Thinking:', result.thinking)
+console.log('Response:', result.text)
+
+// Streaming with thinking tokens
+for await (const chunk of result) {
+  if (chunk.type === 'thinking') {
+    console.log('[Thinking]', chunk.text)
+  } else {
+    process.stdout.write(chunk.text)
+  }
+}
 ```
 
 ## Message Utilities
@@ -318,6 +433,38 @@ const result = await generate({
   },
 })
 ```
+
+## AI Devtools
+
+TanStack AI includes a dedicated devtools panel for debugging AI workflows:
+
+```tsx
+import { TanStackDevtools } from '@tanstack/react-devtools'
+import { AIDevtoolsPanel } from '@tanstack/ai-react/devtools'
+
+function App() {
+  return (
+    <TanStackDevtools
+      plugins={[
+        {
+          id: 'ai',
+          name: 'AI',
+          render: () => <AIDevtoolsPanel />,
+        },
+      ]}
+    />
+  )
+}
+```
+
+AI Devtools features:
+- **Message Inspector** - View full conversation history with metadata
+- **Token Usage** - Track input/output tokens and costs per request
+- **Streaming Visualization** - Real-time view of streaming chunks
+- **Tool Call Debugging** - Inspect tool calls, parameters, and results
+- **Thinking/Reasoning Viewer** - Debug reasoning tokens from thinking models
+- **Adapter Switching** - Test different providers in development
+- **Request/Response Logs** - Full HTTP request/response inspection
 
 ## TanStack Start Integration
 

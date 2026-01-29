@@ -114,6 +114,37 @@ function App() {
 }
 ```
 
+### AI Devtools
+
+For debugging TanStack AI workflows:
+
+```tsx
+import { TanStackDevtools } from '@tanstack/react-devtools'
+import { AIDevtoolsPanel } from '@tanstack/ai-react/devtools'
+
+function App() {
+  return (
+    <TanStackDevtools
+      plugins={[
+        {
+          id: 'ai',
+          name: 'AI',
+          render: () => <AIDevtoolsPanel />,
+        },
+      ]}
+    />
+  )
+}
+```
+
+AI Devtools features:
+- **Message Inspector** - View full conversation history with metadata
+- **Token Usage** - Track input/output tokens and costs per request
+- **Streaming Visualization** - Real-time view of streaming chunks
+- **Tool Call Debugging** - Inspect tool calls, parameters, and results
+- **Thinking/Reasoning Viewer** - Debug reasoning tokens from thinking models
+- **Adapter Switching** - Test different providers in development
+
 ## Plugin System
 
 ### Plugin Interface
@@ -236,6 +267,7 @@ const TanStackDevtools = lazy(() =>
 - **Unified Panel** - Single interface for all TanStack debugging
 - **Real-time Updates** - Live monitoring of state changes
 - **Plugin Architecture** - Extensible with custom and third-party plugins
+- **Built-in Plugins** - Query, Router, and AI devtools panels
 - **Lightweight** - Built with Solid.js for minimal overhead
 - **Type-safe** - Full TypeScript support for plugin definitions
 - **Framework-agnostic Core** - Plugin logic works across frameworks
@@ -247,8 +279,9 @@ const TanStackDevtools = lazy(() =>
 3. **Give plugins unique IDs** to prevent conflicts
 4. **Keep plugin render functions lightweight** - avoid expensive computations
 5. **Use the Vite plugin** for automatic setup in Vite-based projects
-6. **Combine Query + Router plugins** for full-stack TanStack debugging
+6. **Combine Query + Router + AI plugins** for full-stack TanStack debugging
 7. **Create domain-specific plugins** for app-level state inspection
+8. **Use AI devtools** when debugging streaming, tool calls, or token usage
 
 ## Common Pitfalls
 

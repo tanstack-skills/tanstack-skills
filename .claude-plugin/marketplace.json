@@ -13,7 +13,7 @@
     {
       "name": "tanstack-all",
       "source": "./plugins/tanstack-all",
-      "description": "All TanStack skills in one plugin - Router, Query, Start, Table, Form, Virtual, Store, DB, AI, Pacer, Devtools, Config, CLI",
+      "description": "All TanStack skills in one plugin - Router, Query, Start, Table, Form, Virtual, Ranger, Store, DB, AI, Pacer, Devtools, Config, CLI",
       "version": "1.0.0",
       "keywords": ["tanstack", "react", "typescript", "full-stack"]
     },
@@ -27,9 +27,9 @@
     {
       "name": "tanstack-ui",
       "source": "./plugins/tanstack-ui",
-      "description": "TanStack UI skills: Table, Form, Virtual - headless UI components",
+      "description": "TanStack UI skills: Table, Form, Virtual, Ranger - headless UI components",
       "version": "1.0.0",
-      "keywords": ["tanstack", "table", "form", "virtual"]
+      "keywords": ["tanstack", "table", "form", "virtual", "ranger"]
     },
     {
       "name": "tanstack-data",
@@ -128,6 +128,13 @@
       "description": "TanStack CLI - Project scaffolding with 30+ integrations and MCP server",
       "version": "1.0.0",
       "keywords": ["tanstack", "cli", "scaffolding", "mcp"]
+    },
+    {
+      "name": "tanstack-ranger",
+      "source": "./plugins/tanstack-ranger",
+      "description": "TanStack Ranger - Headless utilities for range and multi-range sliders",
+      "version": "1.0.0",
+      "keywords": ["tanstack", "ranger", "slider", "range", "headless"]
     }
   ]
 }

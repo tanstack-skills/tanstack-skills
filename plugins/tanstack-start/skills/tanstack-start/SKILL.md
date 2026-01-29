@@ -13,6 +13,7 @@ TanStack Start is a full-stack React framework built on TanStack Router, powered
 **Router Plugin:** `@tanstack/router-plugin`
 **Build Tool:** Vinxi (Vite + Nitro)
 **Status:** RC (Release Candidate)
+**RSC Support:** React Server Components support is in active development and will land as a non-breaking v1.x addition
 
 ## Installation & Project Setup
 
